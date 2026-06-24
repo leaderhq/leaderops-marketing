@@ -1,6 +1,6 @@
 
 /**
- * LeaderLeads brand wordmark + mark (part of the Leader family).
+ * LeaderOps brand wordmark + mark (part of the Leader family).
  *
  * The mark is three stacked chevrons climbing — brand green, navy, blue from
  * bottom to top. The wordmark sets "Leader" in navy and "Leads" in green using
@@ -36,7 +36,7 @@ export function LeaderMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="LeaderLeads"
+      aria-label="LeaderOps"
       className={className}
     >
       {/* bottom chevron — green */}
@@ -51,8 +51,8 @@ export function LeaderMark({
 
 
 /**
- * Full lockup: the official LeaderLeads wordmark (chevron mark + two-tone
- * "LeaderLeads" in the brand font). Served as a transparent SVG asset so the
+ * Full lockup: the official LeaderOps wordmark (chevron mark + two-tone
+ * "LeaderOps" in the brand font). Served as a transparent SVG asset so the
  * exact brand typography renders crisply at any size. Aspect ratio ~5.6:1.
  */
 export function Wordmark({
@@ -66,8 +66,8 @@ export function Wordmark({
   return (
     // eslint-disable-next-line @next/next/no-img-element -- static brand SVG, no next/image needed
     <img
-      src="/brand/LeaderLeads_wordmark.svg"
-      alt="LeaderLeads"
+      src="/brand/LeaderOps_wordmark.svg"
+      alt="LeaderOps"
       style={{ width: 'auto', display: 'block', ...(height ? { height } : {}) }}
       className={className}
     />

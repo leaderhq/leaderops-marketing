@@ -1,25 +1,60 @@
 import type { Metadata } from 'next';
-import { SuiteBar, SiteNav, SiteFooter } from '@leader/marketing-ui';
+import { SiteNav, SiteFooter } from '@leader/marketing-ui';
 
 export const metadata: Metadata = {
-  title: 'Security & GDPR — LeaderLeads',
+  title: 'Security & GDPR — LeaderOps',
   description:
-    'How LeaderLeads protects your data, your GDPR rights as a data subject, and how to exercise them.',
+    'How LeaderOps protects your data, your GDPR rights as a data subject, and how to exercise them.',
   alternates: { canonical: '/security' },
 };
 
+const APP_URL = 'https://ops.leaderhq.io';
 const LAST_UPDATED = 'June 2026';
+
+const NAV_LINKS = [
+  { label: 'How It Works', href: '/#how' },
+  { label: 'Intelligence', href: '/#intelligence' },
+  { label: 'Pricing', href: '/#pricing' },
+];
+
+const FOOTER_COLUMNS = [
+  {
+    heading: 'Product',
+    links: [
+      { label: 'How It Works', href: '/#how' },
+      { label: 'Intelligence', href: '/#intelligence' },
+      { label: 'Pricing', href: '/#pricing' },
+      { label: 'System Status', href: 'https://leaderhq.io/status', external: true },
+    ],
+  },
+  {
+    heading: 'Leader Suite',
+    links: [
+      { label: 'LeaderHQ', href: 'https://leaderhq.io', external: true },
+      { label: 'LeaderLeads', href: 'https://leaderleads.io', external: true },
+      { label: 'LeaderSend', href: 'https://leadersend.io', external: true },
+      { label: 'LeaderCal', href: 'https://leadercal.io', external: true },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'Contact', href: '/contact' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+    ],
+  },
+];
 
 export default function SecurityPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-zinc-900">
-      <SuiteBar appUrl="https://task.leaderhq.io" />
       <SiteNav
-        productSuffix="Leads"
-        links={[{ label: "How It Works", href: "/how-it-works" }, { label: "Memory Moment", href: "/memory-moment" }, { label: "Solutions", href: "#" }, { label: "Blog", href: "/blog" }]}
-        ctaLabel="Get Your Free Card"
-        ctaHref="/signup"
-        loginHref="https://leads.leaderhq.io/login"
+        productSuffix="Ops"
+        links={NAV_LINKS}
+        ctaLabel="Get LeaderOps Free"
+        ctaHref={`${APP_URL}/signup`}
+        loginHref={`${APP_URL}/login`}
       />
       <main className="flex-1">
         <article className="mx-auto max-w-[720px] px-4 py-12 sm:px-6 sm:py-16">
@@ -43,7 +78,7 @@ export default function SecurityPage() {
 
             <Section title="How we protect your data">
               <p>
-                LeaderLeads is a product of LeaderHQ, operated by Know Freedom Technologies.
+                LeaderOps is a product of LeaderHQ, operated by Know Freedom Technologies.
                 We apply the following measures to keep your data secure:
               </p>
               <ul className="mt-3 space-y-2 pl-5 list-disc">
@@ -53,9 +88,9 @@ export default function SecurityPage() {
                   application over unencrypted HTTP.
                 </li>
                 <li>
-                  <strong>Encryption at rest.</strong> Stored data — including contact
-                  records, card content, and lead information — is encrypted at rest in our
-                  database infrastructure.
+                  <strong>Encryption at rest.</strong> Stored data — including comp plan
+                  extracts, downline records, and account information — is encrypted at rest
+                  in our database infrastructure.
                 </li>
                 <li>
                   <strong>Access controls.</strong> Internal access to production data is
@@ -85,8 +120,8 @@ export default function SecurityPage() {
               <ul className="mt-3 space-y-2 pl-5 list-disc">
                 <li>
                   <strong>Contract performance.</strong> Processing necessary to provide the
-                  LeaderLeads service you have signed up for — creating your card, storing
-                  your lead inbox, sending Memory Moment emails.
+                  LeaderOps service you have signed up for — parsing your comp plan,
+                  generating daily priorities, delivering rank alerts.
                 </li>
                 <li>
                   <strong>Legitimate interests.</strong> Processing necessary for fraud
@@ -123,11 +158,11 @@ export default function SecurityPage() {
                 </li>
                 <li>
                   <strong>Right to rectification.</strong> You may ask us to correct
-                  inaccurate or incomplete data. Most card and profile data can be corrected
+                  inaccurate or incomplete data. Most profile data can be corrected
                   directly in your dashboard.
                 </li>
                 <li>
-                  <strong>Right to erasure ("right to be forgotten").</strong> You may
+                  <strong>Right to erasure (&ldquo;right to be forgotten&rdquo;).</strong> You may
                   request deletion of your account and associated personal data. We will
                   action this within 30 days, subject to any legal retention obligations.
                 </li>
@@ -158,9 +193,8 @@ export default function SecurityPage() {
                 and legal compliance. Specifically:
               </p>
               <ul className="mt-3 space-y-2 pl-5 list-disc">
-                <li>Account and card data: retained for the life of your account plus 90 days after deletion request.</li>
-                <li>Lead and contact records: retained with your account; deleted on account erasure request.</li>
-                <li>Memory Moment images: retained until you delete them or request account erasure.</li>
+                <li>Account and profile data: retained for the life of your account plus 90 days after deletion request.</li>
+                <li>Comp plan extracts and downline records: retained with your account; deleted on account erasure request.</li>
                 <li>Transactional emails and logs: retained for up to 12 months for fraud and security purposes.</li>
                 <li>Billing records: retained for 7 years as required by applicable financial regulations.</li>
               </ul>
@@ -169,12 +203,12 @@ export default function SecurityPage() {
             <Section title="Sub-processors and third-party services">
               <p>
                 We use the following categories of third-party processors to operate
-                LeaderLeads. Each is bound by a data processing agreement consistent with
+                LeaderOps. Each is bound by a data processing agreement consistent with
                 GDPR requirements:
               </p>
               <ul className="mt-3 space-y-2 pl-5 list-disc">
                 <li><strong>Cloud infrastructure:</strong> servers, databases, and object storage</li>
-                <li><strong>Transactional email:</strong> delivery of OTP codes, Memory Moment emails, and account notifications (Postmark)</li>
+                <li><strong>Transactional email:</strong> delivery of OTP codes, alerts, and account notifications (Postmark)</li>
                 <li><strong>Payment processing:</strong> Stripe — we do not store card numbers; all payment data is handled by Stripe directly</li>
                 <li><strong>Analytics:</strong> aggregated, anonymised product usage analytics only — no personally identifiable data shared</li>
               </ul>
@@ -192,7 +226,7 @@ export default function SecurityPage() {
 
             <Section title="Data Processing Agreement (DPA)">
               <p>
-                If you use LeaderLeads in a business context and require a Data Processing
+                If you use LeaderOps in a business context and require a Data Processing
                 Agreement for your own GDPR compliance, email{' '}
                 <a
                   href="mailto:privacy@leaderhq.io"
@@ -200,7 +234,7 @@ export default function SecurityPage() {
                 >
                   privacy@leaderhq.io
                 </a>{' '}
-                with "DPA Request" in the subject line. We will provide a signed DPA within
+                with &ldquo;DPA Request&rdquo; in the subject line. We will provide a signed DPA within
                 5 business days.
               </p>
             </Section>
@@ -241,10 +275,7 @@ export default function SecurityPage() {
           </div>
         </article>
       </main>
-      <SiteFooter
-        productSuffix="Leads"
-        columns={[{"heading":"Product","links":[{"label":"How It Works","href":"/how-it-works"},{"label":"Memory Moment","href":"/memory-moment"},{"label":"Event Mode","href":"/how-it-works#event-mode"},{"label":"Pricing","href":"/pricing"},{"label":"System Status","href":"https://leaderhq.io/status"}]},{"heading":"Solutions","links":[{"label":"Network Marketing","href":"/for-network-marketing"},{"label":"Conferences & Events","href":"/for-conferences"},{"label":"Summer Sales","href":"/for-summer-sales"},{"label":"Sales Teams","href":"/for-teams"},{"label":"Blog & Resources","href":"/blog"}]},{"heading":"Company","links":[{"label":"About LeaderHQ","href":"/about"},{"label":"Contact","href":"/contact"},{"label":"Privacy Policy","href":"/privacy"},{"label":"Terms of Service","href":"/terms"},{"label":"Security & GDPR","href":"/security"}]}]}
-      />
+      <SiteFooter productSuffix="Ops" columns={FOOTER_COLUMNS} />
     </div>
   );
 }
