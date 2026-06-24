@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 import Link from 'next/link';
-import { SuiteBar, SiteNav, SiteFooter, FadeIn, TypewriterHeadline } from '@leader/marketing-ui';
+import { SiteNav, SiteFooter, FadeIn, TypewriterHeadline } from '@leader/marketing-ui';
 import { OpsCommandMock } from './_marketing/mocks';
 import { MarketingIcon, type MarketingIconName } from './_marketing/icons';
 
@@ -214,7 +214,6 @@ const PLANS: Plan[] = [
 export default function HomePage(): JSX.Element {
   return (
     <div className="flex min-h-screen flex-col bg-white text-zinc-900">
-      <SuiteBar appUrl={APP_URL} />
       <SiteNav
         productSuffix="Ops"
         links={NAV_LINKS}

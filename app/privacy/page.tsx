@@ -1,25 +1,60 @@
 import type { Metadata } from 'next';
-import { SuiteBar, SiteNav, SiteFooter } from '@leader/marketing-ui';
+import { SiteNav, SiteFooter } from '@leader/marketing-ui';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — LeaderLeads',
+  title: 'Privacy Policy — LeaderOps',
   description:
-    'How LeaderHQ collects, uses, and protects information when you use LeaderLeads.',
+    'How LeaderHQ collects, uses, and protects information when you use LeaderOps.',
   alternates: { canonical: '/privacy' },
 };
 
+const APP_URL = 'https://ops.leaderhq.io';
 const LAST_UPDATED = 'June 2026';
+
+const NAV_LINKS = [
+  { label: 'How It Works', href: '/#how' },
+  { label: 'Intelligence', href: '/#intelligence' },
+  { label: 'Pricing', href: '/#pricing' },
+];
+
+const FOOTER_COLUMNS = [
+  {
+    heading: 'Product',
+    links: [
+      { label: 'How It Works', href: '/#how' },
+      { label: 'Intelligence', href: '/#intelligence' },
+      { label: 'Pricing', href: '/#pricing' },
+      { label: 'System Status', href: 'https://leaderhq.io/status', external: true },
+    ],
+  },
+  {
+    heading: 'Leader Suite',
+    links: [
+      { label: 'LeaderHQ', href: 'https://leaderhq.io', external: true },
+      { label: 'LeaderLeads', href: 'https://leaderleads.io', external: true },
+      { label: 'LeaderSend', href: 'https://leadersend.io', external: true },
+      { label: 'LeaderCal', href: 'https://leadercal.io', external: true },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'Contact', href: '/contact' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+    ],
+  },
+];
 
 export default function PrivacyPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-zinc-900">
-      <SuiteBar appUrl="https://task.leaderhq.io" />
       <SiteNav
-        productSuffix="Leads"
-        links={[{ label: "How It Works", href: "/how-it-works" }, { label: "Memory Moment", href: "/memory-moment" }, { label: "Solutions", href: "#" }, { label: "Blog", href: "/blog" }]}
-        ctaLabel="Get Your Free Card"
-        ctaHref="/signup"
-        loginHref="https://leads.leaderhq.io/login"
+        productSuffix="Ops"
+        links={NAV_LINKS}
+        ctaLabel="Get LeaderOps Free"
+        ctaHref={`${APP_URL}/signup`}
+        loginHref={`${APP_URL}/login`}
       />
       <main className="flex-1">
         <article className="mx-auto max-w-[720px] px-4 py-12 sm:px-6 sm:py-16">
@@ -48,11 +83,11 @@ export default function PrivacyPage() {
           <div className="space-y-8 text-[15px] leading-relaxed text-zinc-700">
             <section>
               <p>
-                LeaderLeads (&ldquo;LeaderLeads,&rdquo; &ldquo;we,&rdquo;
+                LeaderOps (&ldquo;LeaderOps,&rdquo; &ldquo;we,&rdquo;
                 &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is a product of LeaderHQ,
                 a division of Know Freedom Technologies. This Privacy Policy
                 explains what information we collect, how we use it, and the
-                choices you have. By using LeaderLeads, you agree to the
+                choices you have. By using LeaderOps, you agree to the
                 practices described here.
               </p>
             </section>
@@ -65,18 +100,14 @@ export default function PrivacyPage() {
                   email address you use to sign in and receive notifications.
                 </li>
                 <li>
-                  <strong className="text-zinc-900">Card content.</strong> The
-                  information you add to your digital business card — name,
-                  title, links, and any details you choose to display.
+                  <strong className="text-zinc-900">Comp plan data.</strong> The
+                  compensation plan PDFs you upload and the structured data we
+                  extract from them.
                 </li>
                 <li>
-                  <strong className="text-zinc-900">Leads.</strong> Contact
-                  details submitted to you by people who interact with your card,
-                  which we store on your behalf.
-                </li>
-                <li>
-                  <strong className="text-zinc-900">Memory Moment photos.</strong>{' '}
-                  Images you attach to a lead to remember where and how you met.
+                  <strong className="text-zinc-900">Downline data.</strong> Contact
+                  records and performance data you import via CSV or Leader Suite
+                  integrations.
                 </li>
                 <li>
                   <strong className="text-zinc-900">
@@ -91,11 +122,11 @@ export default function PrivacyPage() {
             <Section title="How we use information">
               <p>We use the information we collect to:</p>
               <ul className="mt-3 list-disc space-y-2 pl-5">
-                <li>Provide, maintain, and improve LeaderLeads.</li>
-                <li>Display your card and deliver leads captured through it.</li>
+                <li>Provide, maintain, and improve LeaderOps.</li>
+                <li>Generate your daily action priorities and rank alerts.</li>
                 <li>
                   Send transactional and account-related email (for example,
-                  lead alerts and sign-in messages).
+                  alerts and sign-in messages).
                 </li>
                 <li>Process subscriptions and billing.</li>
                 <li>Protect against fraud, abuse, and security issues.</li>
@@ -110,7 +141,7 @@ export default function PrivacyPage() {
               <ul className="mt-3 list-disc space-y-2 pl-5">
                 <li>
                   <strong className="text-zinc-900">Postmark</strong> processes
-                  our transactional email so we can deliver lead alerts and
+                  our transactional email so we can deliver alerts and
                   sign-in messages.
                 </li>
                 <li>
@@ -126,12 +157,11 @@ export default function PrivacyPage() {
 
             <Section title="Data retention">
               <p>
-                We retain your account information, card content, leads, and
-                Memory Moment photos for as long as your account is active. When
-                you delete content or close your account, we remove the
-                associated data within a reasonable period, except where we are
-                required to retain it to comply with legal obligations or resolve
-                disputes.
+                We retain your account information, comp plan data, and downline
+                records for as long as your account is active. When you delete
+                content or close your account, we remove the associated data
+                within a reasonable period, except where we are required to
+                retain it to comply with legal obligations or resolve disputes.
               </p>
             </Section>
 
@@ -164,7 +194,7 @@ export default function PrivacyPage() {
               <p>
                 We may update this Privacy Policy from time to time. When we do,
                 we will revise the &ldquo;Last updated&rdquo; date above.
-                Continued use of LeaderLeads after a change constitutes
+                Continued use of LeaderOps after a change constitutes
                 acceptance of the updated policy.
               </p>
             </Section>
@@ -199,10 +229,7 @@ export default function PrivacyPage() {
           </div>
         </article>
       </main>
-      <SiteFooter
-        productSuffix="Leads"
-        columns={[{"heading":"Product","links":[{"label":"How It Works","href":"/how-it-works"},{"label":"Memory Moment","href":"/memory-moment"},{"label":"Event Mode","href":"/how-it-works#event-mode"},{"label":"Pricing","href":"/pricing"},{"label":"System Status","href":"https://leaderhq.io/status"}]},{"heading":"Solutions","links":[{"label":"Network Marketing","href":"/for-network-marketing"},{"label":"Conferences & Events","href":"/for-conferences"},{"label":"Summer Sales","href":"/for-summer-sales"},{"label":"Sales Teams","href":"/for-teams"},{"label":"Blog & Resources","href":"/blog"}]},{"heading":"Company","links":[{"label":"About LeaderHQ","href":"/about"},{"label":"Contact","href":"/contact"},{"label":"Privacy Policy","href":"/privacy"},{"label":"Terms of Service","href":"/terms"},{"label":"Security & GDPR","href":"/security"}]}]}
-      />
+      <SiteFooter productSuffix="Ops" columns={FOOTER_COLUMNS} />
     </div>
   );
 }
@@ -225,4 +252,3 @@ function Section({
     </section>
   );
 }
-

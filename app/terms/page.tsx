@@ -1,25 +1,60 @@
 import type { Metadata } from 'next';
-import { SuiteBar, SiteNav, SiteFooter } from '@leader/marketing-ui';
+import { SiteNav, SiteFooter } from '@leader/marketing-ui';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions — LeaderLeads',
+  title: 'Terms & Conditions — LeaderOps',
   description:
-    'The terms that govern your use of LeaderLeads, a product of LeaderHQ.',
+    'The terms that govern your use of LeaderOps, a product of LeaderHQ.',
   alternates: { canonical: '/terms' },
 };
 
+const APP_URL = 'https://ops.leaderhq.io';
 const LAST_UPDATED = 'June 2026';
+
+const NAV_LINKS = [
+  { label: 'How It Works', href: '/#how' },
+  { label: 'Intelligence', href: '/#intelligence' },
+  { label: 'Pricing', href: '/#pricing' },
+];
+
+const FOOTER_COLUMNS = [
+  {
+    heading: 'Product',
+    links: [
+      { label: 'How It Works', href: '/#how' },
+      { label: 'Intelligence', href: '/#intelligence' },
+      { label: 'Pricing', href: '/#pricing' },
+      { label: 'System Status', href: 'https://leaderhq.io/status', external: true },
+    ],
+  },
+  {
+    heading: 'Leader Suite',
+    links: [
+      { label: 'LeaderHQ', href: 'https://leaderhq.io', external: true },
+      { label: 'LeaderLeads', href: 'https://leaderleads.io', external: true },
+      { label: 'LeaderSend', href: 'https://leadersend.io', external: true },
+      { label: 'LeaderCal', href: 'https://leadercal.io', external: true },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'Contact', href: '/contact' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+    ],
+  },
+];
 
 export default function TermsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-zinc-900">
-      <SuiteBar appUrl="https://task.leaderhq.io" />
       <SiteNav
-        productSuffix="Leads"
-        links={[{ label: "How It Works", href: "/how-it-works" }, { label: "Memory Moment", href: "/memory-moment" }, { label: "Solutions", href: "#" }, { label: "Blog", href: "/blog" }]}
-        ctaLabel="Get Your Free Card"
-        ctaHref="/signup"
-        loginHref="https://leads.leaderhq.io/login"
+        productSuffix="Ops"
+        links={NAV_LINKS}
+        ctaLabel="Get LeaderOps Free"
+        ctaHref={`${APP_URL}/signup`}
+        loginHref={`${APP_URL}/login`}
       />
       <main className="flex-1">
         <article className="mx-auto max-w-[720px] px-4 py-12 sm:px-6 sm:py-16">
@@ -49,22 +84,22 @@ export default function TermsPage() {
             <section>
               <p>
                 These Terms &amp; Conditions (&ldquo;Terms&rdquo;) govern your
-                access to and use of LeaderLeads (&ldquo;LeaderLeads,&rdquo;
+                access to and use of LeaderOps (&ldquo;LeaderOps,&rdquo;
                 &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;), a
                 product of LeaderHQ, a division of Know Freedom Technologies. By
                 creating an account or using the service, you agree to these
-                Terms. If you do not agree, do not use LeaderLeads.
+                Terms. If you do not agree, do not use LeaderOps.
               </p>
             </section>
 
             <Section title="Acceptable use">
               <p>
-                You agree to use LeaderLeads only for lawful purposes and in
+                You agree to use LeaderOps only for lawful purposes and in
                 accordance with these Terms. You will not use the service to
                 store, send, or distribute content that is illegal, infringing,
                 deceptive, harassing, or harmful, and you will comply with all
                 applicable laws, including those governing electronic
-                communications and the contacts you capture.
+                communications and the data you import.
               </p>
             </Section>
 
@@ -74,8 +109,8 @@ export default function TermsPage() {
                 account and for keeping your sign-in credentials secure. You must
                 provide accurate information, promptly update it as needed, and
                 notify us of any unauthorized use of your account. You are
-                responsible for the card content and lead data you collect and
-                for having any necessary permission to collect it.
+                responsible for the comp plan data and downline records you upload
+                and for having any necessary permission to process them.
               </p>
             </Section>
 
@@ -104,7 +139,7 @@ export default function TermsPage() {
 
             <Section title="Disclaimer of warranties">
               <p>
-                LeaderLeads is provided &ldquo;as is&rdquo; and &ldquo;as
+                LeaderOps is provided &ldquo;as is&rdquo; and &ldquo;as
                 available,&rdquo; without warranties of any kind, whether
                 express or implied, including any implied warranties of
                 merchantability, fitness for a particular purpose, and
@@ -127,7 +162,7 @@ export default function TermsPage() {
 
             <Section title="Termination">
               <p>
-                You may stop using LeaderLeads and close your account at any time.
+                You may stop using LeaderOps and close your account at any time.
                 We may suspend or terminate your access if you violate these Terms
                 or if we discontinue the service. Upon termination, your right to
                 use the service ends, and we may delete your data as described in
@@ -139,7 +174,7 @@ export default function TermsPage() {
               <p>
                 We may update these Terms from time to time. When we do, we will
                 revise the &ldquo;Last updated&rdquo; date above. Continued use of
-                LeaderLeads after a change constitutes acceptance of the updated
+                LeaderOps after a change constitutes acceptance of the updated
                 Terms.
               </p>
             </Section>
@@ -173,10 +208,7 @@ export default function TermsPage() {
           </div>
         </article>
       </main>
-      <SiteFooter
-        productSuffix="Leads"
-        columns={[{"heading":"Product","links":[{"label":"How It Works","href":"/how-it-works"},{"label":"Memory Moment","href":"/memory-moment"},{"label":"Event Mode","href":"/how-it-works#event-mode"},{"label":"Pricing","href":"/pricing"},{"label":"System Status","href":"https://leaderhq.io/status"}]},{"heading":"Solutions","links":[{"label":"Network Marketing","href":"/for-network-marketing"},{"label":"Conferences & Events","href":"/for-conferences"},{"label":"Summer Sales","href":"/for-summer-sales"},{"label":"Sales Teams","href":"/for-teams"},{"label":"Blog & Resources","href":"/blog"}]},{"heading":"Company","links":[{"label":"About LeaderHQ","href":"/about"},{"label":"Contact","href":"/contact"},{"label":"Privacy Policy","href":"/privacy"},{"label":"Terms of Service","href":"/terms"},{"label":"Security & GDPR","href":"/security"}]}]}
-      />
+      <SiteFooter productSuffix="Ops" columns={FOOTER_COLUMNS} />
     </div>
   );
 }
@@ -199,4 +231,3 @@ function Section({
     </section>
   );
 }
-
