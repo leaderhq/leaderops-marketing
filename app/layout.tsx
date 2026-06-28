@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   description: "LeaderOps reads your comp plan, connects your tools, and tells you exactly who to call and what to do — every single morning.",
   applicationName: "LeaderOps",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon-light.png", type: "image/png", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon-dark.png", type: "image/png", media: "(prefers-color-scheme: dark)" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+  },
   appleWebApp: {
     capable: true,
     title: "LeaderOps",
